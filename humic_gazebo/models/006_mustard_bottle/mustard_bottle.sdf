@@ -1,0 +1,59 @@
+<?xml version='1.0'?>
+<sdf version="1.6">
+  <model name="mustard_bottle">
+    <static>false</static>
+    <link name="link">
+      <inertial>       
+        <pose>-0.010054331427098055 -0.01310937618792766 0.04504227100332876 3.139775176868279 -0.006897737912601517 -1.9707896704413652</pose> 
+        <mass>0.0006120391571167176</mass>
+        <!-- <mass>0.603</mass> -->
+        <inertia>
+          <!-- <ixx>1.6697164243557222e-06</ixx>
+          <ixy>1.819474111707905e-22</ixy>
+          <ixz>-7.390544777673609e-24</ixz>
+          <iyy>1.4549960053833636e-06</iyy>
+          <iyz>-2.6577523638590025e-25</iyz>
+          <izz>4.2928863786736373e-07</izz> -->
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <!-- Use a downsampled mesh for collisions -->
+            <uri>model://006_mustard_bottle/downsampled.obj</uri>
+            <scale>0.5 0.5 0.5</scale>
+	        </mesh>
+        </geometry>
+        
+        <surface>
+        <!--<friction>
+          <ode>
+            <mu>0.8</mu>
+            <mu2>0.6</mu2>
+          </ode>
+        </friction>-->
+      </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://006_mustard_bottle/google_16k/textured.obj</uri>
+            <scale>0.5 0.5 0.5</scale>
+	        </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://006_mustard_bottle/mustard_bottle.material</uri>
+            <name>mustard_bottle</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
