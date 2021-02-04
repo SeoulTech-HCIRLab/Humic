@@ -1,0 +1,442 @@
+<?xml version="1.0"?>
+<robot name="humic" xmlns:xacro="http://ros.org/wiki/xacro">
+    <!-- Gazebo Plugin -->
+    <!--Manipulator_H-->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/humic</robotNamespace> <!-- /humic_controller, right_arm-->
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+            <!-- <legacyModeNS>true</legacyModeNS> -->
+        </plugin>
+    </gazebo>
+    
+    <!-- Robot Link-->
+    <!-- mobile platform body-->
+    <gazebo reference="base_link">
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <!-- head -->
+    <gazebo reference="neck_link">
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="neck_head_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="head_kinect_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <!-- right ARM -->
+    <gazebo reference="r_shoulder_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_shoulder_link_collision</collision>
+            </contact>
+            <plugin name="r_shoulder_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_shoulder_link</frameName>
+            </plugin>
+        </sensor>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="r_upperArm_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_upperArm_link_collision</collision>
+            </contact>
+            <plugin name="r_upperArm_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_upperArm_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="r_elbow_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_foreArm_link_collision</collision>
+            </contact>
+            <plugin name="r_foreArm_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_foreArm_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="r_foreArm_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_foreArm_link_collision</collision>
+            </contact>
+            <plugin name="r_foreArm_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_foreArm_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="r_lowerArm_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_lowerArm_link_collision</collision>
+            </contact>
+            <plugin name="r_lowerArm_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_lowerArm_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="r_wrist_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_wrist_link_collision</collision>
+            </contact>
+            <plugin name="r_wrist_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_wrist_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <!-- right Hand -->
+    <gazebo reference="r_hand_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_hand_link_collision</collision>
+            </contact>
+            <plugin name="r_hand_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_hand_link</frameName>
+            </plugin>
+        </sensor>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="r_finger_link">
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="r_finger1_1_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_finger1_1_link_collision</collision>
+            </contact>
+            <plugin name="r_finger1_1_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_finger1_1_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="r_finger1_2_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_finger1_2_link_collision</collision>
+            </contact>
+            <plugin name="r_finger1_2_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_finger1_2_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="r_finger2_1_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_finger2_1_link_collision</collision>
+            </contact>
+            <plugin name="r_finger2_1_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_finger2_1_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="r_finger2_2_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_finger2_2_link_collision</collision>
+            </contact>
+            <plugin name="r_finger2_2_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_finger2_2_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="r_finger3_1_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_finger3_1_link_collision</collision>
+            </contact>
+            <plugin name="r_finger3_1_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_finger3_1_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="r_finger3_2_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_finger3_2_link_collision</collision>
+            </contact>
+            <plugin name="r_finger3_2_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_finger3_2_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="r_finger4_1_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_finger4_1_link_collision</collision>
+            </contact>
+            <plugin name="r_finger4_1_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_finger4_1_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="r_finger4_2_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_finger4_2_link_collision</collision>
+            </contact>
+            <plugin name="r_finger4_2_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_finger4_2_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="r_thumb_link">
+        <sensor type="contact" name="humic_contact_sensor">
+            <update_rate>100.0</update_rate>
+            <always_on>true</always_on>
+            <contact>
+                <collision>r_thumb_link_collision</collision>
+            </contact>
+            <plugin name="r_thumb_link_plugin" filename="libgazebo_ros_bumper.so">
+                <bumperTopicName>humic/gazebo_contact</bumperTopicName>
+                <frameName>r_thumb_link</frameName>
+            </plugin>
+        </sensor>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <!-- left ARM -->
+    <gazebo reference="l_shoulder_link">
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="l_upperArm_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="l_elbow_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="l_foreArm_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="l_lowerArm_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    
+    <gazebo reference="l_wrist_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <!-- left Hand -->
+    <gazebo reference="l_hand_link">
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="l_finger_link">
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="l_finger1_1_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="l_finger1_2_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="l_finger2_1_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="l_finger2_2_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="l_finger3_1_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="l_finger3_2_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="l_finger4_1_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="l_finger4_2_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+
+    <gazebo reference="l_thumb_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <material>Gazebo/white</material>
+    </gazebo>
+</robot>
