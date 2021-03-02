@@ -1,0 +1,20 @@
+<library path="src">
+  <class name="HumicController" type="rqt_humicpkg.humic_module.HumicController" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      Humic Python GUI plugin
+    </description>
+    <qtgui>
+      <!-- optional grouping...
+      <group>
+        <label>Group</label>
+      </group>
+      <group>
+        <label>Subgroup</label>
+      </group>
+      -->
+      <label>Humic Controller</label>
+      <icon type="theme">system-search</icon>
+      <statustip>Humic Controller GUI</statustip>
+    </qtgui>
+  </class>
+</library>

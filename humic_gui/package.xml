@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package format="2">
+  <name>humic_gui</name>
+  <version>1.0.0</version>
+  <description>
+    HCIR Lab., The Humic gazebo simulator gui package
+  </description>
+  <license>Apache 2.0</license>
+  <author email="kyg1552@gmail.com">Kim Young Gi</author>
+  <maintainer email="kyg1552@gmail.com">Kim Young Gi</maintainer>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>rqt_gui_py</build_depend>
+  
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>rqt_gui_py</exec_depend>
+
+  <export>
+    <rqt_gui plugin="${prefix}/plugin.xml"/>
+  </export>
+</package>
