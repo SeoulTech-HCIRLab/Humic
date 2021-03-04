@@ -1,1 +1,3 @@
-# Humic
+# Humic ROS package
+#
+## ROS Version: Noetic 
