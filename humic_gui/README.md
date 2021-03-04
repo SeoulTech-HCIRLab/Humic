@@ -1,1 +1,1 @@
-# humic_gui
+# Humic controller RQT GUI Plugin Package
