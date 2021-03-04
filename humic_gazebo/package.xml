@@ -3,7 +3,7 @@
   <name>humic_gazebo</name>
   <version>1.0.0</version>
   <description>
-    HCIR Lab., The Humic Robot Gazebo simulation package
+    HCIR Lab., The Humic gazebo simulation package
   </description>
   <license>Apache 2.0</license>
   <author email="kyg1552@gmail.com">Kim Young Gi</author>
