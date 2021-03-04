@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <robot name="humic" xmlns:xacro="http://ros.org/wiki/xacro">
 
-    <!-- Import all Gazebo-customization elements, including Gazebo colors -->
-    <xacro:include filename="$(find humic_description)/urdf/humic.gazebo.xacro"/>
-
-    <!-- Import Rviz colors -->
     <xacro:include filename="$(find humic_description)/urdf/materials.xacro"/>
-    
-    <xacro:include filename="$(find humic_description)/urdf/humic.transmission.xacro"/>
+
+    <xacro:include filename="$(find humic_description)/urdf/humic.gazebo.xacro"/>
+   
+    <xacro:include filename="$(find humic_description)/urdf/humic.right_transmission.xacro"/>
+    <xacro:include filename="$(find humic_description)/urdf/humic.left_transmission.xacro"/>
+    <xacro:include filename="$(find humic_description)/urdf/humic.head_transmission.xacro"/>
+    <xacro:include filename="$(find humic_description)/urdf/humic.column_transmission.xacro"/>
 
     <!-- base footprint -->
     <link name="base_footprint"/>
@@ -41,76 +42,76 @@
         </inertial>
     </link>
 
-    <!-- <joint name="ultrasonic1_joint" type="fixed">
+    <joint name="front_ultrasound_joint" type="fixed">
         <origin xyz="0.12 0 0.038" rpy="0 0 0"/>
         <parent link="base_link"/>
-        <child link="ultrasonic1"/>
+        <child link="front_ultrasound"/>
     </joint>
 
-    <link name="ultrasonic1">
+    <link name="front_ultrasound">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
                 <box size="0.002 0.002 0.002"/>
             </geometry>
-            <material name="Red"/>
+            <material name="red"/>
         </visual>
     </link>
 
-    <joint name="ultrasonic2_joint" type="fixed">
+    <joint name="left_ultrasound_joint" type="fixed">
         <origin xyz="-0.004 0.063 0.038" rpy="0 0 1.57"/>
         <parent link="base_link"/>
-        <child link="ultrasonic2"/>
+        <child link="left_ultrasound"/>
     </joint>
 
-    <link name="ultrasonic2">
+    <link name="left_ultrasound">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
                 <box size="0.002 0.002 0.002"/>
             </geometry>
-            <material name="Red"/>
+            <material name="red"/>
         </visual>
     </link>
 
-    <joint name="ultrasonic3_joint" type="fixed">
+    <joint name="right_ultrasound_joint" type="fixed">
         <origin xyz="-0.004 -0.063 0.038" rpy="0 0 -1.57"/>
         <parent link="base_link"/>
-        <child link="ultrasonic3"/>
+        <child link="right_ultrasound"/>
     </joint>
 
-    <link name="ultrasonic3">
+    <link name="right_ultrasound">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
                 <box size="0.002 0.002 0.002"/>
             </geometry>
-            <material name="Red"/>
+            <material name="red"/>
         </visual>
     </link>
 
-    <joint name="ultrasonic4_joint" type="fixed">
+    <joint name="rear_ultrasound_joint" type="fixed">
         <origin xyz="-0.117 0 0.038" rpy="0 0 3.14"/>
         <parent link="base_link"/>
-        <child link="ultrasonic4"/>
+        <child link="rear_ultrasound"/>
     </joint>
 
-    <link name="ultrasonic4">
+    <link name="rear_ultrasound">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
                 <box size="0.002 0.002 0.002"/>
             </geometry>
-            <material name="Red"/>
+            <material name="red"/>
         </visual>
-    </link> -->
+    </link>
 
     <!-- Mobile-Platform Wheel -->
     <!-- front left & rear right couple-->
     <!-- front right & rear left couple-->
 
-    <joint name="rear_left_wheel_joint" type="fixed"> <!-- continuous -->
-        <!-- <axis xyz="0 -1 0" /> -->
+    <joint name="rear_left_wheel_joint" type="continuous">
+        <axis xyz="0 -1 0" />
         <origin xyz="-0.085 0.085 0" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="rear_left_wheel_link"/>
@@ -139,8 +140,8 @@
         </inertial>
     </link>
 
-    <joint name="rear_right_wheel_joint" type="fixed"> <!-- continuous -->
-        <!-- <axis xyz="0 1 0" /> -->
+    <joint name="rear_right_wheel_joint" type="continuous">
+        <axis xyz="0 1 0" />
         <origin xyz="-0.085 -0.085 0" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="rear_right_wheel_link"/>
@@ -169,8 +170,8 @@
         </inertial>
     </link>
 
-    <joint name="front_right_wheel_joint" type="fixed"> <!-- continuous -->
-        <!-- <axis xyz="0 1 0" /> -->
+    <joint name="front_right_wheel_joint" type="continuous">
+        <axis xyz="0 1 0" />
         <origin xyz="0.085 0.085 0" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="front_right_wheel_link"/>
@@ -199,8 +200,8 @@
         </inertial>
     </link>
 
-    <joint name="front_left_wheel_joint" type="fixed"> <!-- continuous -->
-        <!-- <axis xyz="0 -1 0" /> -->
+    <joint name="front_left_wheel_joint" type="continuous">
+        <axis xyz="0 -1 0" />
         <origin xyz="0.085 -0.085 0" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="front_left_wheel_link"/>
@@ -229,7 +230,7 @@
         </inertial>
     </link>
     
-    <!-- Column -->
+    <!-- Lift Column -->
     <joint name="base_column_joint" type="fixed">
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <parent link="base_link"/>
@@ -259,9 +260,9 @@
         </inertial>
     </link>
 
-    <joint name="inner_column_joint" type="fixed"> <!--prismatic-->
-        <!-- <axis xyz="0 0 1" /> -->
-        <!-- <limit velocity="1" effort="1" lower="0" upper="0.10" /> -->
+    <joint name="inner_column_joint" type="prismatic">
+        <axis xyz="0 0 1" />
+        <limit velocity="1" effort="1" lower="0" upper="0.10" />
         <origin xyz="0.05 0 0.05" rpy="0 0 0"/> 
         <parent link="base_column_link"/>
         <child link="inner_column_link"/>
@@ -300,15 +301,6 @@
             <material name="grey"/>
         </visual>
 
-        <!-- <collision>
-            <origin xyz="-0.016 0 0.275" rpy="0 0 0"/>
-            <geometry>
-                <mesh
-                    filename="package://humic_description/meshes/STL/torso.stl" scale="0.01 0.01 0.01"/>
-            </geometry>
-            <material name="grey"/>
-        </collision> -->
-
         <collision>
             <origin xyz="-0.003 0 0.23" rpy="0 0 0"/>
             <geometry>
@@ -345,16 +337,16 @@
         </inertial>
     </link>
 
-    <joint name="neck_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="0 0 1" /> -->
-        <!-- <limit velocity="6.5" effort="1000" lower="-0.7854" upper="0.7854" /> -->
-        <!-- <dynamics damping="0.7"/> -->
+    <joint name="neck_joint" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit velocity="6.5" effort="1000" lower="-0.7854" upper="0.7854" />
+        <dynamics damping="0.7"/>
         <origin xyz="0.023 0 0.337" rpy="0 0 0"/>
         <parent link="neck_link"/>
-        <child link="neck_head_link"/>
+        <child link="head_link"/>
     </joint>
 
-    <link name="neck_head_link">
+    <link name="head_link">
         <visual>
             <origin xyz="-0.073 0 -0.338" rpy="0 0 0"/>
             <geometry>
@@ -370,13 +362,12 @@
         </inertial>
     </link>
 
-    <joint name="neck_head_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="0 -1 0" /> -->
-        <!-- <limit velocity="6.5" effort="1000" lower="-0.7854" upper="0.7854" /> -->
-        <!-- <dynamics damping="0.7"/> -->
-        <!-- <origin xyz="0 0 0.02" rpy="0 0 0"/>  -->
-        <origin xyz="0 0 0.02" rpy="0 0.6 0"/> 
-        <parent link="neck_head_link"/>
+    <joint name="head_joint" type="revolute">
+        <axis xyz="0 -1 0" />
+        <limit velocity="6.5" effort="1000" lower="-0.7854" upper="0.7854" />
+        <dynamics damping="0.7"/>
+        <origin xyz="0 0 0.02" rpy="0 0.6 0"/>
+        <parent link="head_link"/>
         <child link="head_kinect_link"/>
     </joint>
 
@@ -472,7 +463,7 @@
         <axis xyz="0 -1 0" />
         <limit velocity="6.5" effort="1000" lower="-3.14" upper="3.14" />
         <dynamics damping="0.7"/>
-        <origin xyz="0.004 -0.123 0.27" rpy="0 -1.57 0"/> <!-- 0 -1.57 0 -->
+        <origin xyz="0.004 -0.123 0.27" rpy="0 -1.57 0"/>
         <parent link="r_shoulder_link"/>
         <child link="r_upperArm_link"/>
     </joint>
@@ -503,7 +494,7 @@
 
     <joint name="r_upperArm_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="6.5" effort="1000" lower="-1.57" upper="1.57" />
+        <limit velocity="6.5" effort="1000" lower="-1.57" upper="0" />
         <dynamics damping="0.7"/>
         <origin xyz="0 -0.011 0" rpy="0 0 0"/>
         <parent link="r_upperArm_link"/>
@@ -536,7 +527,7 @@
 
     <joint name="r_elbow_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="6.5" effort="1000" lower="-1.57" upper="1.57" />
+        <limit velocity="6.5" effort="1000" lower="0" upper="0.52" />
         <dynamics damping="0.7"/>
         <origin xyz="0 0.011 -0.105" rpy="0 0 0"/>
         <parent link="r_elbow_link"/>
@@ -602,7 +593,7 @@
 
     <joint name="r_lowerArm_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="6.5" effort="1000" lower="-1.57" upper="1.57" />
+        <limit velocity="13" effort="1000" lower="-1.57" upper="1.57" />
         <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.012" rpy="0 0 0"/>
         <parent link="r_lowerArm_link"/>
@@ -635,7 +626,7 @@
 
     <joint name="r_wrist_joint" type="revolute">
         <axis xyz="0 0 -1" />
-        <limit velocity="6.5" effort="1000" lower="-1.57" upper="1.57" />
+        <limit velocity="13" effort="1000" lower="-1.57" upper="1.57" />
         <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.048" rpy="0 0 0"/>
         <parent link="r_wrist_link"/>
@@ -681,8 +672,8 @@
 
     <joint name="r_finger1_1_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="5" effort="1" lower="0" upper="1.57" />
-        <dynamics damping="0.7"/>
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="0.012 -0.006 -0.036" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
         <child link="r_finger1_1_link"/>
@@ -714,8 +705,8 @@
 
     <joint name="r_finger1_2_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="5" effort="1" lower="0" upper="1.57" />
-        <dynamics damping="0.7"/>
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="0 0 -0.02" rpy="0 0 0"/>
         <parent link="r_finger1_1_link"/>
         <child link="r_finger1_2_link"/>
@@ -747,8 +738,8 @@
 
     <joint name="r_finger2_1_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="5" effort="1" lower="0" upper="1.57" />
-        <dynamics damping="0.7"/>
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="0.004 -0.006 -0.036" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
         <child link="r_finger2_1_link"/>
@@ -780,8 +771,8 @@
 
     <joint name="r_finger2_2_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="5" effort="1" lower="0" upper="1.57" />
-        <dynamics damping="0.7"/>
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="0 0 -0.021" rpy="0 0 0"/>
         <parent link="r_finger2_1_link"/>
         <child link="r_finger2_2_link"/>
@@ -813,8 +804,8 @@
 
     <joint name="r_finger3_1_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="5" effort="1" lower="0" upper="1.57" />
-        <dynamics damping="0.7"/>
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="-0.004 -0.006 -0.036" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
         <child link="r_finger3_1_link"/>
@@ -846,8 +837,8 @@
 
     <joint name="r_finger3_2_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="5" effort="1" lower="0" upper="1.57" />
-        <dynamics damping="0.7"/>
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="0 0 -0.017" rpy="0 0 0"/>
         <parent link="r_finger3_1_link"/>
         <child link="r_finger3_2_link"/>
@@ -879,8 +870,8 @@
 
     <joint name="r_finger4_1_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="5" effort="1" lower="0" upper="1.57" />
-        <dynamics damping="0.7"/>
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="-0.012 -0.006 -0.036" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
         <child link="r_finger4_1_link"/>
@@ -912,8 +903,8 @@
 
     <joint name="r_finger4_2_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="5" effort="1" lower="0" upper="1.57" />
-        <dynamics damping="0.7"/>
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="0 0 -0.015" rpy="0 0 0"/>
         <parent link="r_finger4_1_link"/>
         <child link="r_finger4_2_link"/>
@@ -944,9 +935,9 @@
     </link>
     
     <joint name="r_thumb_joint" type="revolute">
-        <axis xyz="0 0 -1" />
-        <limit velocity="5" effort="1" lower="0" upper="0.785" />
-        <dynamics damping="0.7"/>
+        <axis xyz="0 0 1" />
+        <limit velocity="1" effort="1" lower="0" upper="0.785" />
+        <dynamics damping="0.2"/>
         <origin xyz="0.005 0.008 -0.020" rpy="0 0 -0.785"/>
         <parent link="r_finger_link"/>
         <child link="r_thumb_link"/>
@@ -992,13 +983,13 @@
             <material name="grey"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.05 0 0" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_shoulder.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.324"/>
@@ -1006,10 +997,10 @@
         </inertial>
     </link>
 
-    <joint name="l_shoulder_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="0 -1 0" /> -->
-        <!-- <limit velocity="6.5" effort="1000" lower="-3.14" upper="3.14" /> -->
-        <!-- <dynamics damping="0.7"/> -->
+    <joint name="l_shoulder_joint" type="revolute">
+        <axis xyz="0 -1 0" />
+        <limit velocity="6.5" effort="1000" lower="-3.14" upper="3.14" />
+        <dynamics damping="0.7"/>
         <origin xyz="0.004 0.123 0.27" rpy="0 0 0"/>
         <parent link="l_shoulder_link"/>
         <child link="l_upperArm_link"/>
@@ -1025,13 +1016,13 @@
             <material name="grey"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.054 -0.125 -0.271" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_upperArm.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.353"/>
@@ -1039,10 +1030,10 @@
         </inertial>
     </link>
 
-    <joint name="l_upperArm_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="-1 0 0" /> -->
-        <!-- <limit velocity="6.5" effort="1000" lower="-1.57" upper="1.57" /> -->
-        <!-- <dynamics damping="0.7"/> -->
+    <joint name="l_upperArm_joint" type="revolute"> 
+        <axis xyz="-1 0 0" />
+        <limit velocity="6.5" effort="1000" lower="-1.57" upper="0" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0.011 0" rpy="0 0 0"/>
         <parent link="l_upperArm_link"/>
         <child link="l_elbow_link"/>
@@ -1059,13 +1050,13 @@
             <material name="grey"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.054 -0.136 -0.271" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_elbow.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.529"/>
@@ -1073,10 +1064,10 @@
         </inertial>
     </link>
 
-    <joint name="l_elbow_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="-1 0 0" /> -->
-        <!-- <limit velocity="6.5" effort="1000" lower="-1.397" upper="0" /> -->
-        <!-- <dynamics damping="0.7"/> -->
+    <joint name="l_elbow_joint" type="revolute">
+        <axis xyz="-1 0 0" />
+        <limit velocity="6.5" effort="1000" lower="0" upper="0.52" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 -0.011 -0.105" rpy="0 0 0"/>
         <parent link="l_elbow_link"/>
         <child link="l_foreArm_link"/>
@@ -1093,13 +1084,13 @@
             <material name="grey"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.054 -0.125 -0.166" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_foreArm.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.501"/>
@@ -1107,10 +1098,10 @@
         </inertial>
     </link>
 
-    <joint name="l_foreArm_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="0 0 -1" /> -->
-        <!-- <limit velocity="6.5" effort="1000" lower="-1.57" upper="1.57" /> -->
-        <!-- <dynamics damping="0.7"/> -->
+    <joint name="l_foreArm_joint" type="revolute"> 
+        <axis xyz="0 0 1" />
+        <limit velocity="6.5" effort="1000" lower="-1.57" upper="1.57" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0.011 -0.090" rpy="0 0 0"/>
         <parent link="l_foreArm_link"/>
         <child link="l_lowerArm_link"/>
@@ -1126,13 +1117,13 @@
             <material name="grey"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.054 -0.136 -0.076" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_lowerArm.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.144"/>
@@ -1140,10 +1131,10 @@
         </inertial>
     </link>
 
-    <joint name="l_lowerArm_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="-1 0 0" /> -->
-        <!-- <limit velocity="6.5" effort="1000" lower="-1.57" upper="1.57" /> -->
-        <!-- <dynamics damping="0.7"/> -->
+    <joint name="l_lowerArm_joint" type="revolute"> 
+        <axis xyz="-1 0 0" />
+        <limit velocity="13" effort="1000" lower="-1.57" upper="1.57" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.012" rpy="0 0 0"/>
         <parent link="l_lowerArm_link"/>
         <child link="l_wrist_link"/>
@@ -1160,13 +1151,13 @@
             <material name="grey"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.054 -0.136 -0.064" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_wrist.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.163"/>
@@ -1174,10 +1165,10 @@
         </inertial>
     </link>
 
-    <joint name="l_wrist_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="0 0 -1" /> -->
-        <!-- <limit velocity="6.5" effort="1000" lower="-1.57" upper="1.57" /> -->
-        <!-- <dynamics damping="0.7"/> -->
+    <joint name="l_wrist_joint" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit velocity="13" effort="1000" lower="-1.57" upper="1.57" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.048" rpy="0 0 0"/>
         <parent link="l_wrist_link"/>
         <child link="l_hand_link"/>
@@ -1193,13 +1184,13 @@
             <material name="grey"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.054 -0.136 -0.015" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_hand.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.072"/>
@@ -1220,10 +1211,10 @@
         </inertial>
     </link>
 
-    <joint name="l_finger1_1_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="-1 0 0" /> -->
-        <!-- <limit velocity="5" effort="1" lower="0" upper="0.5" /> -->
-        <!-- <dynamics damping="0.7" friction="0"/> -->
+    <joint name="l_finger1_1_joint" type="revolute"> 
+        <axis xyz="-1 0 0" />
+        <limit velocity="1" effort="1" lower="0" upper="1.57"/>
+        <dynamics damping="0.2"/>
         <origin xyz="0.012 0.006 -0.036" rpy="0 0 0"/>
         <parent link="l_finger_link"/>
         <child link="l_finger1_1_link"/>
@@ -1239,13 +1230,13 @@
             <material name="white"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.066 -0.14 0.0255" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_finger1_1.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.054"/>
@@ -1253,10 +1244,10 @@
         </inertial>
     </link>
 
-    <joint name="l_finger1_2_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="-1 0 0" /> -->
-        <!-- <limit velocity="5" effort="1" lower="0" upper="0.5" /> -->
-        <!-- <dynamics damping="0.7" friction="0"/> -->
+    <joint name="l_finger1_2_joint" type="revolute"> 
+        <axis xyz="-1 0 0" />
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="0 0 -0.02" rpy="0 0 0"/>
         <parent link="l_finger1_1_link"/>
         <child link="l_finger1_2_link"/>
@@ -1272,13 +1263,13 @@
             <material name="white"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.066 -0.14 0.045" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_finger1_2.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.050"/>
@@ -1286,10 +1277,10 @@
         </inertial>
     </link>
 
-    <joint name="l_finger2_1_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="-1 0 0" /> -->
-        <!-- <limit velocity="5" effort="1" lower="0" upper="0.5" /> -->
-        <!-- <dynamics damping="0.7" friction="0"/> -->
+    <joint name="l_finger2_1_joint" type="revolute"> 
+        <axis xyz="-1 0 0" />
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="0.004 0.006 -0.036" rpy="0 0 0"/>
         <parent link="l_finger_link"/>
         <child link="l_finger2_1_link"/>
@@ -1305,13 +1296,13 @@
             <material name="white"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.058 -0.14 0.0255" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_finger2_1.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.054"/>
@@ -1319,10 +1310,10 @@
         </inertial>
     </link>
 
-    <joint name="l_finger2_2_joint" type="fixed"> <!-- revolute-->
-        <!-- <axis xyz="-1 0 0" /> -->
-        <!-- <limit velocity="5" effort="1" lower="0" upper="0.5" /> -->
-        <!-- <dynamics damping="0.7" friction="0"/> -->
+    <joint name="l_finger2_2_joint" type="revolute"> 
+        <axis xyz="-1 0 0" />
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="0 0 -0.021" rpy="0 0 0"/>
         <parent link="l_finger2_1_link"/>
         <child link="l_finger2_2_link"/>
@@ -1338,13 +1329,13 @@
             <material name="white"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.058 -0.14 0.045" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_finger2_2.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.050"/>
@@ -1352,10 +1343,10 @@
         </inertial>
     </link>
 
-    <joint name="l_finger3_1_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="-1 0 0" /> -->
-        <!-- <limit velocity="5" effort="1" lower="0" upper="0.5" /> -->
-        <!-- <dynamics damping="0.7" friction="0"/> -->
+    <joint name="l_finger3_1_joint" type="revolute"> 
+        <axis xyz="-1 0 0" />
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="-0.004 0.006 -0.036" rpy="0 0 0"/>
         <parent link="l_finger_link"/>
         <child link="l_finger3_1_link"/>
@@ -1371,13 +1362,13 @@
             <material name="white"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.05 -0.14 0.0255" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_finger3_1.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.047"/>
@@ -1385,10 +1376,10 @@
         </inertial>
     </link>
 
-    <joint name="l_finger3_2_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="-1 0 0" /> -->
-        <!-- <limit velocity="5" effort="1" lower="0" upper="0.5" /> -->
-        <!-- <dynamics damping="0.7" friction="0"/> -->
+    <joint name="l_finger3_2_joint" type="revolute"> 
+        <axis xyz="-1 0 0" />
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="0 0 -0.017" rpy="0 0 0"/>
         <parent link="l_finger3_1_link"/>
         <child link="l_finger3_2_link"/>
@@ -1404,13 +1395,13 @@
             <material name="white"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.05 -0.14 0.041" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_finger3_2.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.049"/>
@@ -1418,10 +1409,10 @@
         </inertial>
     </link>
 
-    <joint name="l_finger4_1_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="-1 0 0" /> -->
-        <!-- <limit velocity="5" effort="1" lower="0" upper="0.5" /> -->
-        <!-- <dynamics damping="0.7" friction="0"/> -->
+    <joint name="l_finger4_1_joint" type="revolute"> 
+        <axis xyz="-1 0 0" />
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="-0.012 0.006 -0.036" rpy="0 0 0"/>
         <parent link="l_finger_link"/>
         <child link="l_finger4_1_link"/>
@@ -1437,13 +1428,13 @@
             <material name="white"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.042 -0.14 0.0255" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_finger4_1.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.040"/>
@@ -1451,10 +1442,10 @@
         </inertial>
     </link>
 
-    <joint name="l_finger4_2_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="-1 0 0" /> -->
-        <!-- <limit velocity="5" effort="1" lower="0" upper="0.5" /> -->
-        <!-- <dynamics damping="0.7" friction="0"/> -->
+    <joint name="l_finger4_2_joint" type="revolute">
+        <axis xyz="-1 0 0" />
+        <limit velocity="1" effort="1" lower="0" upper="1.57" />
+        <dynamics damping="0.2"/>
         <origin xyz="0 0 -0.015" rpy="0 0 0"/>
         <parent link="l_finger4_1_link"/>
         <child link="l_finger4_2_link"/>
@@ -1470,13 +1461,13 @@
             <material name="white"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.042 -0.14 0.039" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_finger4_2.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.047"/>
@@ -1484,11 +1475,11 @@
         </inertial>
     </link>
 
-    <joint name="l_thumb_joint" type="fixed"> <!-- revolute -->
-        <!-- <axis xyz="0 0 1" /> -->
-        <!-- <limit velocity="5" effort="1" lower="0" upper="0.785" /> -->
-        <!-- <dynamics damping="0.7" friction="0"/> -->
-        <origin xyz="0.005 -0.008 -0.020" rpy="0 0 0"/>
+    <joint name="l_thumb_joint" type="revolute">
+        <axis xyz="0 0 -1" />
+        <limit velocity="1" effort="1" lower="0" upper="0.785" />
+        <dynamics damping="0.2"/>
+        <origin xyz="0.005 -0.008 -0.020" rpy="0 0 0.785"/>
         <parent link="l_finger_link"/>
         <child link="l_thumb_link"/>
     </joint>
@@ -1503,13 +1494,13 @@
             <material name="white"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="-0.057 -0.126 0.005" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/l_thumb.stl" scale="0.01 0.01 0.01"/>
             </geometry>
-        </collision> -->
+        </collision>
 
         <inertial>
             <mass value="0.063"/>
