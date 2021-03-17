@@ -14,7 +14,8 @@
         $ roslaunch humic_gazebo humic.launch
 
 2. You can see Humic Robot in gazebo
-  ![Humic_in_gazebo_empty](https://user-images.githubusercontent.com/37207332/111419168-4e7c1e80-872c-11eb-9de5-afb159a405f5.png)
+    
+    ![Humic_in_gazebo_empty](https://user-images.githubusercontent.com/37207332/111419168-4e7c1e80-872c-11eb-9de5-afb159a405f5.png)
 
 3. You can control Joint
   * Joints
