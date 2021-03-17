@@ -1,3 +1,0 @@
-<launch>
-    <node pkg="humic_rl" type="humicpush" name="humicpush" output="screen" />
-</launch>

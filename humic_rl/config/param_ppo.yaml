@@ -1,9 +1,0 @@
-episode: 5000
-model_save: 10
-update_timestep: 2000
-n_epochs: 10
-clipping: 0.2
-gamma: 0.99
-hidden1: 64
-hidden2: 32
-learning_rate: 0.003
