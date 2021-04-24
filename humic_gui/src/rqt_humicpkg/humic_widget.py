@@ -160,11 +160,13 @@ class HumicWidget(QWidget):
         self.pushButton_planning.pressed.connect(self.PlanningTask)
 
         """ YCB Object """
-        self.object_list = ['003_cracker_box', '004_sugar_box', '005_tomato_soup_can', '009_gelatin_box']
+        self.object_list = ['003_cracker_box', '004_sugar_box', '006_mustard_bottle', '009_gelatin_box', '010_potted_meat_can', '021_bleach_cleanser']
         self.cracker = YCBObject(model=self.object_list[0])
         self.sugar = YCBObject(model=self.object_list[1])
-        self.soup = YCBObject(model=self.object_list[2])
+        self.mustard = YCBObject(model=self.object_list[2])
         self.gelatin = YCBObject(model=self.object_list[3])
+        self.meatcan = YCBObject(model=self.object_list[4])
+        self.cleanser = YCBObject(model=self.object_list[5])
 
         self.init_obj = True
     
@@ -480,8 +482,10 @@ class HumicWidget(QWidget):
     def setObjectPose(self, position_check=False, delete=False):
         self.cracker.setPose(position_check=position_check, delete=delete)
         self.sugar.setPose(position_check=position_check, delete=delete)
-        self.soup.setPose(position_check=position_check, delete=delete)
+        self.mustard.setPose(position_check=position_check, delete=delete)
         self.gelatin.setPose(position_check=position_check, delete=delete)
+        self.meatcan.setPose(position_check=position_check, delete=delete)
+        self.cleanser.setPose(position_check=position_check, delete=delete)
 
     def PlanningTask(self):
         self.r_arm_joint_angles = [0, -1.57, 0, 0, 0, 0]
@@ -493,8 +497,8 @@ class HumicWidget(QWidget):
 
         time.sleep(1.5)
 
-        self.r_arm_joint_angles = [1.3, -1.57, 0.52, 0, 0, 0]
-        self.l_arm_joint_angles = [1.3, -1.57, 0.52, 0, 0, 0]
+        self.r_arm_joint_angles = [1.4, -1.57, 0.52, 0, 0, 0]
+        self.l_arm_joint_angles = [1.4, -1.57, 0.52, 0, 0, 0]
         angles = self.getTrajectoryMsg(self.r_arm_joints, self.r_arm_joint_angles)
         self.r_arm_pub.publish(angles)
         angles = self.getTrajectoryMsg(self.l_arm_joints, self.l_arm_joint_angles)
@@ -502,8 +506,8 @@ class HumicWidget(QWidget):
 
         time.sleep(1.5)
 
-        self.r_arm_joint_angles = [1.3, -0.06, 0.52, 0, 0.4, 0]
-        self.l_arm_joint_angles = [1.3, -0.06, 0.52, 0, 0.4, 0]
+        self.r_arm_joint_angles = [1.4, -0.06, 0.52, 0, 0.4, 0]
+        self.l_arm_joint_angles = [1.4, -0.06, 0.52, 0, 0.4, 0]
         angles = self.getTrajectoryMsg(self.r_arm_joints, self.r_arm_joint_angles)
         self.r_arm_pub.publish(angles)
         angles = self.getTrajectoryMsg(self.l_arm_joints, self.l_arm_joint_angles)

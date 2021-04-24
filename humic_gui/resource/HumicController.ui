@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1146</width>
+    <width>1148</width>
     <height>328</height>
    </rect>
   </property>
@@ -354,14 +354,23 @@ s key: stop</string>
       <height>26</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
     <property name="minimum">
      <double>-1.570000000000000</double>
     </property>
     <property name="maximum">
-     <double>0.000000000000000</double>
+     <double>1.570000000000000</double>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>
+    </property>
+    <property name="stepType">
+     <enum>QAbstractSpinBox::DefaultStepType</enum>
+    </property>
+    <property name="value">
+     <double>0.000000000000000</double>
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="doubleSpinBox_r_elbow">
@@ -373,11 +382,23 @@ s key: stop</string>
       <height>26</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
+    <property name="minimum">
+     <double>-0.780000000000000</double>
+    </property>
     <property name="maximum">
-     <double>0.520000000000000</double>
+     <double>1.570000000000000</double>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>
+    </property>
+    <property name="stepType">
+     <enum>QAbstractSpinBox::DefaultStepType</enum>
+    </property>
+    <property name="value">
+     <double>0.000000000000000</double>
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="doubleSpinBox_r_foreArm">
@@ -389,14 +410,23 @@ s key: stop</string>
       <height>26</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
     <property name="minimum">
-     <double>-1.570000000000000</double>
+     <double>-3.140000000000000</double>
     </property>
     <property name="maximum">
-     <double>1.570000000000000</double>
+     <double>3.140000000000000</double>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>
+    </property>
+    <property name="stepType">
+     <enum>QAbstractSpinBox::DefaultStepType</enum>
+    </property>
+    <property name="value">
+     <double>0.000000000000000</double>
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="doubleSpinBox_r_lowerArm">
@@ -408,6 +438,9 @@ s key: stop</string>
       <height>26</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
     <property name="minimum">
      <double>-1.570000000000000</double>
     </property>
@@ -416,6 +449,12 @@ s key: stop</string>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>
+    </property>
+    <property name="stepType">
+     <enum>QAbstractSpinBox::DefaultStepType</enum>
+    </property>
+    <property name="value">
+     <double>0.000000000000000</double>
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="doubleSpinBox_r_wrist">
@@ -428,10 +467,10 @@ s key: stop</string>
      </rect>
     </property>
     <property name="minimum">
-     <double>-1.570000000000000</double>
+     <double>-3.140000000000000</double>
     </property>
     <property name="maximum">
-     <double>1.570000000000000</double>
+     <double>3.140000000000000</double>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>
@@ -565,14 +604,23 @@ s key: stop</string>
       <height>26</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
     <property name="minimum">
      <double>-1.570000000000000</double>
     </property>
     <property name="maximum">
-     <double>0.000000000000000</double>
+     <double>1.570000000000000</double>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>
+    </property>
+    <property name="stepType">
+     <enum>QAbstractSpinBox::DefaultStepType</enum>
+    </property>
+    <property name="value">
+     <double>0.000000000000000</double>
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="doubleSpinBox_l_elbow">
@@ -584,11 +632,23 @@ s key: stop</string>
       <height>26</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
+    <property name="minimum">
+     <double>-0.780000000000000</double>
+    </property>
     <property name="maximum">
-     <double>0.520000000000000</double>
+     <double>1.570000000000000</double>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>
+    </property>
+    <property name="stepType">
+     <enum>QAbstractSpinBox::DefaultStepType</enum>
+    </property>
+    <property name="value">
+     <double>0.000000000000000</double>
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="doubleSpinBox_l_foreArm">
@@ -600,14 +660,23 @@ s key: stop</string>
       <height>26</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
     <property name="minimum">
-     <double>-1.570000000000000</double>
+     <double>-3.140000000000000</double>
     </property>
     <property name="maximum">
-     <double>1.570000000000000</double>
+     <double>3.140000000000000</double>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>
+    </property>
+    <property name="stepType">
+     <enum>QAbstractSpinBox::DefaultStepType</enum>
+    </property>
+    <property name="value">
+     <double>0.000000000000000</double>
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="doubleSpinBox_l_lowerArm">
@@ -619,6 +688,9 @@ s key: stop</string>
       <height>26</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
     <property name="minimum">
      <double>-1.570000000000000</double>
     </property>
@@ -627,6 +699,12 @@ s key: stop</string>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>
+    </property>
+    <property name="stepType">
+     <enum>QAbstractSpinBox::DefaultStepType</enum>
+    </property>
+    <property name="value">
+     <double>0.000000000000000</double>
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="doubleSpinBox_l_wrist">
@@ -638,14 +716,23 @@ s key: stop</string>
       <height>26</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
     <property name="minimum">
-     <double>-1.570000000000000</double>
+     <double>-3.140000000000000</double>
     </property>
     <property name="maximum">
-     <double>1.570000000000000</double>
+     <double>3.140000000000000</double>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>
+    </property>
+    <property name="stepType">
+     <enum>QAbstractSpinBox::DefaultStepType</enum>
+    </property>
+    <property name="value">
+     <double>0.000000000000000</double>
     </property>
    </widget>
   </widget>
@@ -741,10 +828,10 @@ s key: stop</string>
      <number>2</number>
     </property>
     <property name="minimum">
-     <double>-0.780000000000000</double>
+     <double>-1.570000000000000</double>
     </property>
     <property name="maximum">
-     <double>0.780000000000000</double>
+     <double>1.570000000000000</double>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>
@@ -769,10 +856,10 @@ s key: stop</string>
      <number>2</number>
     </property>
     <property name="minimum">
-     <double>-0.790000000000000</double>
+     <double>-1.570000000000000</double>
     </property>
     <property name="maximum">
-     <double>0.790000000000000</double>
+     <double>1.570000000000000</double>
     </property>
     <property name="singleStep">
      <double>0.010000000000000</double>

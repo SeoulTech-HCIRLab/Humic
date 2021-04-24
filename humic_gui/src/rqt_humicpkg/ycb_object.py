@@ -1,7 +1,6 @@
 # -------------------------------
 # Humic YCB Object Controller
 # Author: Kim Young Gi(HCIR Lab.)
-# Date: 2020. 02. 02
 # Refer to ROBOTIS Turtlebot3 Machine Learning package
 # -------------------------------
 
@@ -35,13 +34,13 @@ class YCBObject(object):
         self.object_position = Pose()
 
         self.init_pose = {
-                            '003_cracker_box':[0.28, -0.04, 0.24, 0.002680, -0.004304, 3.094354], # translation[x,y,z], rotation[x,y,z]
-                            '004_sugar_box':[0.27, 0.07, 0.24, 0.001111, -0.000811, -2.479553],
-                            '005_tomato_soup_can':[0.23, -0.05, 0.24, 0.000270, -0.000286, 0.0],
-                            # '006_mustard_bottle':[], 
-                            '009_gelatin_box':[0.24, 0.04, 0.24, -0.000132, -0.000268, 0.000000], 
-                            # '010_potted_meat_can':[], 
-                            #'021_bleach_cleanser':[]
+                            '003_cracker_box':[0.713329, 0.215572, 0.733239, -0.000787, -0.004160, 0.693423], # translation[x,y,z], rotation[x,y,z]
+                            '004_sugar_box':[0.788297, -0.055475, 0.729798, -0.012855, -0.006456, -0.260465],
+                            # '005_tomato_soup_can':[],
+                            '006_mustard_bottle':[0.710370, -0.151026, 0.733105, -0.001192, -0.000387, -0.002376], 
+                            '009_gelatin_box':[0.592424, -0.061840, 0.730432, -0.002686, -0.003865, 2.873844], 
+                            '010_potted_meat_can':[0.645572, 0.137873, 0.7331033, -0.003180, -0.002622, 0.046759], 
+                            '021_bleach_cleanser':[0.817132, 0.043675, 0.730438, -0.001831, -0.001163, 0.035973]
                         }
         self.init_object_pose = self.init_pose[self.modelName]
 
