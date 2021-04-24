@@ -11,23 +11,19 @@
     </include>
 
     <include>
-      <uri>model://desk</uri>
-    </include>
-
-    <include>
       <uri>model://room</uri>
     </include>
 
     <gui fullscreen='0'>
         <camera name='user_camera'>
-          <pose> 0.523837 -0.659214 18.111139 0.000892 1.569796 -3.139656</pose>
+          <pose> 1.836854 -0.049893 1.498478 0.000000 0.589798 3.098637</pose>
           <view_controller>orbit</view_controller>
         </camera>
     </gui>
 
     <physics type="ode">
-        <real_time_update_rate>1000.0</real_time_update_rate>
-        <max_step_size>0.001</max_step_size>
+        <!-- <real_time_update_rate>1000.0</real_time_update_rate> -->
+        <max_step_size>0.002</max_step_size>
         <real_time_factor>1</real_time_factor>
     </physics>
   </world>

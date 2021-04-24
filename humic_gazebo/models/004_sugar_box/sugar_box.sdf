@@ -8,18 +8,18 @@
         <mass>0.000637932730363638</mass>
         <!-- <mass>0.514</mass> -->
         <inertia>
-          <!-- <ixx>2.0142733073790597e-06</ixx>
+          <ixx>2.0142733073790597e-06</ixx>
           <ixy>4.876039012366301e-24</ixy>
           <ixz>-2.047617690268012e-22</ixz>
           <iyy>1.6869117109553225e-06</iyy>
           <iyz>-3.9455603492194365e-22</iyz>
-          <izz>5.036834967526001e-07</izz> -->
-          <ixx>1</ixx>
+          <izz>5.036834967526001e-07</izz>
+          <!-- <ixx>1</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
           <iyy>1</iyy>
           <iyz>0</iyz>
-          <izz>1</izz>
+          <izz>1</izz> -->
         </inertia>
       </inertial>
 
@@ -31,16 +31,11 @@
 
 
       <collision name="collision">
-        <pose>-0.004 -0.0085 0.044 -3.126326294796978 0.040126571648077605 3.103110966594215</pose>
         <geometry>
-          <box> 
-            <size> 0.023 0.046 0.0878</size>
-          </box>
-          <!-- <mesh> -->
+          <mesh>
             <!-- Use a downsampled mesh for collisions -->
-            <!-- <uri>model://004_sugar_box/downsampled.obj</uri> -->
-            <!-- <scale>0.5 0.5 0.5</scale> -->
-	        <!-- </mesh> -->
+            <uri>model://004_sugar_box/downsampled.obj</uri>
+	        </mesh>
         </geometry>
         <surface>
         <!--<friction>
@@ -55,7 +50,6 @@
         <geometry>
           <mesh>
             <uri>model://004_sugar_box/google_16k/textured.obj</uri>
-            <scale>0.5 0.5 0.5</scale>
 	        </mesh>
         </geometry>
         <material>

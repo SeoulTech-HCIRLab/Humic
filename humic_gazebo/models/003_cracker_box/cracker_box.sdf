@@ -9,20 +9,20 @@
           <inertial>    
             <pose frame=''>-0.01485355781018036 -0.01020505447388014 0.05220486833098277 3.133592366386321 0.010946297886107008 3.140976285001705</pose> 
             <mass>0.0021732875685518717</mass>
-            <!-- <mass>0.411</mass>-->
+            <!-- <mass>0.411</mass> -->
             <inertia>
-              <!-- <ixx>1.2667764335249046e-05</ixx>
+              <ixx>1.2667764335249046e-05</ixx>
               <ixy>-1.7985519821155229e-23</ixy>
               <ixz>3.669342532837818e-23</ixz>
               <iyy>8.895223860935137e-06</iyy>
               <iyz>-5.74592761502014e-22</iyz>
-              <izz>5.284067250610003e-06</izz> -->
-              <ixx>1</ixx>
+              <izz>5.284067250610003e-06</izz>
+              <!-- <ixx>1</ixx>
               <ixy>0</ixy>
               <ixz>0</ixz>
               <iyy>1</iyy>
               <iyz>0</iyz>
-              <izz>1</izz>
+              <izz>1</izz> -->
             </inertia>
           </inertial>
 
@@ -33,16 +33,11 @@
           <kinematic>0</kinematic>
 
           <collision name="cracker_collision">
-            <pose frame=''>-0.006 -0.008 0.05220486833098277 3.133592366386321 0.010946297886107008 3.140976285001705</pose>
             <geometry>
-              <box> 
-                <size> 0.035 0.08 0.1</size>
-              </box>
-              <!-- <mesh> -->
+              <mesh>
                 <!-- Use a downsampled mesh for collisions -->
-                <!-- <uri>model://003_cracker_box/downsampled.obj</uri> -->
-                <!-- <scale>0.5 0.5 0.5</scale> -->
-              <!-- </mesh> -->
+                <uri>model://003_cracker_box/downsampled.obj</uri>
+              </mesh>
             </geometry>
             <surface>
               <!--<friction>
@@ -59,7 +54,6 @@
             <geometry>
               <mesh>
                 <uri>model://003_cracker_box/google_16k/textured.obj</uri>
-                <scale>0.5 0.5 0.5</scale>
               </mesh>
             </geometry>
             <material>

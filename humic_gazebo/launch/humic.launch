@@ -8,7 +8,9 @@
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <!-- <arg name="world_name" value="$(find humic_gazebo)/worlds/empty.world"/> -->
-    <arg name="world_name" value="$(find humic_gazebo)/worlds/humic_desk.world"/>
+    <!-- <arg name="world_name" value="$(find humic_gazebo)/worlds/humic_desk.world"/> -->
+    <!-- <arg name="world_name" value="$(find humic_gazebo)/worlds/humic_room.world"/> -->
+    <arg name="world_name" value="$(find humic_gazebo)/worlds/humic_navigation.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>
@@ -29,6 +31,5 @@
    <!-- Combine joint values -->
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
 
-  
   <include file="$(find humic_gazebo)/launch/humic_controller.launch" />
 </launch>

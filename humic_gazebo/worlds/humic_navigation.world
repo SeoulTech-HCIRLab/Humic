@@ -10,24 +10,35 @@
       <uri>model://ground_plane</uri>
     </include>
 
-    <include>
-      <uri>model://desk</uri>
+    <!-- <include>
+      <uri>model://building</uri>
     </include>
+    
+    <include>
+      <uri>model://obstacle</uri>
+    </include> -->
 
     <include>
       <uri>model://room</uri>
     </include>
 
+    <include>
+      <uri>model://obstacle2</uri>
+    </include>
+    
     <gui fullscreen='0'>
         <camera name='user_camera'>
-          <pose> 0.523837 -0.659214 18.111139 0.000892 1.569796 -3.139656</pose>
+          <!-- Room -->
+          <pose> 4.124555 -0.077484 12.532587 -0.000003 1.213798 -3.141232</pose> 
+          <!-- Building -->
+          <!-- <pose> -3.156587 0.550675 21.474428 -0.000027 1.549798 -3.137255</pose>  -->
           <view_controller>orbit</view_controller>
         </camera>
     </gui>
 
     <physics type="ode">
         <real_time_update_rate>1000.0</real_time_update_rate>
-        <max_step_size>0.001</max_step_size>
+        <max_step_size>0.002</max_step_size>
         <real_time_factor>1</real_time_factor>
     </physics>
   </world>

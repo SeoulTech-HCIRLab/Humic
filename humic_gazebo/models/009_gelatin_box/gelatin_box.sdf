@@ -8,18 +8,18 @@
         <mass>0.0001730558194301085</mass>
         <!-- <mass>0.097</mass> -->
         <inertia>
-          <!-- <ixx>1.808808464126736e-07</ixx>
+          <ixx>1.808808464126736e-07</ixx>
           <ixy>-1.977250977406005e-25</ixy>
           <ixz>1.378083553350472e-24</ixz>
           <iyy>1.1880213011661254e-07</iyy>
           <iyz>1.4284326317117856e-23</iyz>
-          <izz>8.422039755656733e-08</izz> -->
-          <ixx>1</ixx>
+          <izz>8.422039755656733e-08</izz>
+          <!-- <ixx>1</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
           <iyy>1</iyy>
           <iyz>0</iyz>
-          <izz>1</izz>
+          <izz>1</izz> -->
         </inertia>
       </inertial>
       <collision name="collision">
@@ -27,7 +27,6 @@
           <mesh>
             <!-- Use a downsampled mesh for collisions -->
             <uri>model://009_gelatin_box/downsampled.obj</uri>
-            <scale>0.5 0.5 0.5</scale>
 	        </mesh>
         </geometry>
         <surface>
@@ -43,7 +42,6 @@
         <geometry>
           <mesh>
             <uri>model://009_gelatin_box/google_16k/textured.obj</uri>
-            <scale>0.5 0.5 0.5</scale>
 	        </mesh>
         </geometry>
         <material>

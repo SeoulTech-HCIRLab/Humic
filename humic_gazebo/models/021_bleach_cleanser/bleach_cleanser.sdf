@@ -8,18 +8,18 @@
         <mass>0.0009723430520036825</mass>
         <!-- <mass>1.131</mass> -->
         <inertia>
-          <!-- <ixx>4.566127982914433e-06</ixx>
+          <ixx>4.566127982914433e-06</ixx>
           <ixy>8.229413895944044e-23</ixy>
           <ixz>-9.337892582334075e-22</ixz>
           <iyy>4.251487136560933e-06</iyy>
           <iyz>1.3341822195985995e-22</iyz>
-          <izz>7.65292449271737e-07</izz> -->
-          <ixx>1</ixx>
+          <izz>7.65292449271737e-07</izz>
+          <!-- <ixx>1</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
           <iyy>1</iyy>
           <iyz>0</iyz>
-          <izz>1</izz>
+          <izz>1</izz> -->
         </inertia>
       </inertial>
       <collision name="collision">
@@ -27,7 +27,6 @@
           <mesh>
             <!-- Use a downsampled mesh for collisions -->
             <uri>model://021_bleach_cleanser/downsampled.obj</uri>
-            <scale>0.5 0.5 0.5</scale>
 	        </mesh>
         </geometry>
         <surface>
@@ -43,7 +42,6 @@
         <geometry>
           <mesh>
             <uri>model://021_bleach_cleanser/google_16k/textured.obj</uri>
-            <scale>0.5 0.5 0.5</scale>
 	        </mesh>
         </geometry>
         <material>
