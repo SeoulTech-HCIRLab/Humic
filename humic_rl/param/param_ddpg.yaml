@@ -1,0 +1,22 @@
+# discount factor for reward (default: 0.99)
+gamma: 0.99
+# target smoothing coefficient(τ) (default: 0.001)
+tau: 0.001
+# Actor learning rate (default: 0.0001)
+actor_lr: 0.0001
+# Critic learning rate (default: 0.001)
+critic_lr: 0.0001
+# random seed (default: 123456)
+seed: 123456
+# batch size (default: 64)
+batch_size: 128
+# hidden 1 size (default: 400)
+hidden1_size: 512
+# hidden 1 size (default: 300)
+hidden2_size: 512
+# size of replay buffer (default: 100000)
+buffer_size: 100000
+# OU Noise parameters
+theta: 0.15
+sigma: 0.2
+dt: 0.01

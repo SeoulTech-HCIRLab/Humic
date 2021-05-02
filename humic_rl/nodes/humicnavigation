@@ -1,0 +1,140 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+# -------------------------------
+# Humic Navigation Task
+# Author:  Kim Young Gi(HCIR Lab.)
+# -------------------------------
+""" ROS """
+import rospy
+import rospkg
+
+""" python Library """
+import os
+import sys
+import time
+import yaml
+import numpy as np
+import matplotlib.pyplot as plt
+import itertools
+
+""" Environment """
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
+from src.humic_navigation_env import HumicNavigationEnv
+from src.ddpg2 import DDPGagent
+
+def DDPGrewardPlot(total_reward, avg_reward, checkpointPath):
+    x = np.arange(1, len(avg_reward)+1, 1)
+    filePath = os.path.join(checkpointPath, 'Humic_Navigation_DDPG_Reward.png')
+    plt.title('HUMIC Navigation Task')
+    plt.ylabel('Reward')       
+    plt.xlabel('Episode')                     
+    plt.plot(x, total_reward, linestyle='-', color='lightgray')
+    plt.plot(x, avg_reward, linestyle='-', color='b')
+    plt.legend(['Total','Average(n=10)'])
+    plt.savefig(filePath)
+
+def DDPGtrain():
+    rospy.init_node('humicnavigation')
+
+    dirPath = rospkg.RosPack().get_path('humic_rl')
+    paramsPath = os.path.join(dirPath, 'param/param_ddpg.yaml')
+    params = yaml.load(open(paramsPath, 'r'))
+
+    np.random.seed(params['seed'])
+
+    HUMICcheckpointpath = 'nodes/checkpoint/navigation/DDPG' # checkpoint Path
+    checkpointPath = os.path.join(dirPath, HUMICcheckpointpath)
+
+    env = HumicNavigationEnv(mapName='room') # room, building
+
+    MAX_EPISODE_STEP = 500
+
+    obs_dim = env.observation_dim
+    action_dim = env.action_dim
+    print("obs_dim: {}\t action_dim: {}".format(obs_dim, action_dim))
+    
+    agent = DDPGagent(obs_dim=obs_dim, action_dim=action_dim, params=params, checkpoint_path=checkpointPath)
+
+    # Training Loop
+    total_numsteps = 0
+    reward_history = []
+    avg_reward_history = []
+    max_episode_reward = 0
+
+    for i_episode in itertools.count(1):
+        obs = env.reset()
+        episode_reward = 0
+        episode_steps = 0
+        done = False
+        
+        while not done:
+            action = agent.getAction(obs)
+            next_state, reward, done, _ = env.step(action)
+            agent.remember(obs, action, reward, next_state, int(not done))
+            agent.learn()
+           
+            episode_steps += 1
+            total_numsteps += 1
+            episode_reward += reward
+            
+            obs = next_state
+
+            if episode_steps % MAX_EPISODE_STEP == 0:
+                done = True
+
+        reward_history.append(episode_reward)
+        avg_reward = np.mean(reward_history[-10:])
+        avg_reward_history.append(avg_reward)
+
+        if i_episode % 10 == 0:
+            DDPGrewardPlot(total_reward=reward_history, avg_reward=avg_reward_history, checkpointPath=checkpointPath)
+
+        if i_episode % 50 == 0:
+            agent.save_models(e=i_episode)
+        # if episode_reward > max_episode_reward:
+        #     max_episode_reward = episode_reward
+        #     agent.save_models(i_episode)
+
+        print("Episode: {}, total numsteps: {}, episode steps: {}, reward: {}".format(i_episode, total_numsteps, episode_steps, round(episode_reward, 3)))
+
+def DDPGtest():
+    rospy.init_node('humicnavigation')
+
+    dirPath = rospkg.RosPack().get_path('humic_rl')
+    paramsPath = os.path.join(dirPath, 'param/param_ddpg.yaml')
+    params = yaml.load(open(paramsPath, 'r'))
+
+    np.random.seed(params['seed'])
+
+    HUMICcheckpointpath = 'nodes/checkpoint/navigation/DDPG/20210502' # checkpoint Path
+    checkpointPath = os.path.join(dirPath, HUMICcheckpointpath)
+
+    env = HumicNavigationEnv(mapName='room') # room, building
+
+    MAX_EPISODE_STEP = 500
+
+    obs_dim = env.observation_dim
+    action_dim = env.action_dim
+    print("obs_dim: {}\t action_dim: {}".format(obs_dim, action_dim))
+    
+    agent = DDPGagent(obs_dim=obs_dim, action_dim=action_dim, params=params, checkpoint_path=checkpointPath)
+    
+    agent.load_models(e=3100)
+
+    for i_episode in itertools.count(1):
+        obs = env.reset()
+        done = False
+        episode_steps = 0
+        print("Episode: {}".format(i_episode))
+        while not done:
+            action = agent.getAction(obs)
+            new_state, reward, done, _ = env.step(action)
+            episode_steps += 1
+            obs = new_state
+            if episode_steps % MAX_EPISODE_STEP == 0:
+                done = True
+
+if __name__ == '__main__':
+    # DDPGtest()
+    DDPGtrain()
