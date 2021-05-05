@@ -683,7 +683,7 @@
 
     <joint name="r_finger1_1_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <limit velocity="3" effort="1000" lower="0" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
         <origin xyz="0.0324 -0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
@@ -716,7 +716,7 @@
 
     <joint name="r_finger1_2_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <limit velocity="3" effort="1000" lower="0" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.054" rpy="0 0 0"/>
         <parent link="r_finger1_1_link"/>
@@ -749,7 +749,7 @@
 
     <joint name="r_finger2_1_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <limit velocity="3" effort="1000" lower="0" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
         <origin xyz="0.0108 -0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
@@ -782,7 +782,7 @@
 
     <joint name="r_finger2_2_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <limit velocity="3" effort="1000" lower="0" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.0567" rpy="0 0 0"/>
         <parent link="r_finger2_1_link"/>
@@ -815,7 +815,7 @@
 
     <joint name="r_finger3_1_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <limit velocity="3" effort="1000" lower="0" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
         <origin xyz="-0.0108 -0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
@@ -848,7 +848,7 @@
 
     <joint name="r_finger3_2_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <limit velocity="3" effort="1000" lower="0" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.0459" rpy="0 0 0"/>
         <parent link="r_finger3_1_link"/>
@@ -881,7 +881,7 @@
 
     <joint name="r_finger4_1_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <limit velocity="3" effort="1000" lower="0" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
         <origin xyz="-0.0324 -0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
@@ -914,7 +914,7 @@
 
     <joint name="r_finger4_2_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <limit velocity="3" effort="1000" lower="0" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.0405" rpy="0 0 0"/>
         <parent link="r_finger4_1_link"/>
@@ -947,7 +947,7 @@
     
     <joint name="r_thumb_joint" type="revolute">
         <axis xyz="0 0 1" />
-        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.25}" />
+        <limit velocity="3" effort="1000" lower="0" upper="${pi*0.25}" />
         <dynamics damping="0.7"/>
         <origin xyz="0.0135 0.0216 -0.054" rpy="0 0 ${-pi*0.25}"/>
         <parent link="r_finger_link"/>
