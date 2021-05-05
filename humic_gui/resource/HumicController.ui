@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1148</width>
+    <width>1150</width>
     <height>328</height>
    </rect>
   </property>
@@ -771,16 +771,16 @@ s key: stop</string>
      </rect>
     </property>
     <property name="decimals">
-     <number>3</number>
+     <number>2</number>
     </property>
     <property name="minimum">
      <double>0.000000000000000</double>
     </property>
     <property name="maximum">
-     <double>0.100000000000000</double>
+     <double>0.200000000000000</double>
     </property>
     <property name="singleStep">
-     <double>0.001000000000000</double>
+     <double>0.010000000000000</double>
     </property>
     <property name="stepType">
      <enum>QAbstractSpinBox::DefaultStepType</enum>
@@ -981,7 +981,7 @@ s key: stop</string>
     <rect>
      <x>350</x>
      <y>230</y>
-     <width>521</width>
+     <width>421</width>
      <height>91</height>
     </rect>
    </property>
