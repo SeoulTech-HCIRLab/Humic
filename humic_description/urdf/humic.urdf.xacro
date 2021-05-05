@@ -11,7 +11,7 @@
     <xacro:include filename="$(find humic_description)/urdf/humic.right_transmission.xacro"/>
     <xacro:include filename="$(find humic_description)/urdf/humic.left_transmission.xacro"/>
     <xacro:include filename="$(find humic_description)/urdf/humic.head_transmission.xacro"/>
-    <!-- <xacro:include filename="$(find humic_description)/urdf/humic.column_transmission.xacro"/> -->
+    <xacro:include filename="$(find humic_description)/urdf/humic.column_transmission.xacro"/>
 
     <!-- base footprint -->
     <link name="base_footprint"/>
@@ -112,7 +112,7 @@
     <!-- Mobile-Platform Wheel -->
     <!-- front left & rear right couple-->
     <!-- front right & rear left couple-->
-    <joint name="rear_left_wheel_joint" type="continuous"> <!-- continuous fixed-->
+    <joint name="rear_left_wheel_joint" type="continuous"> 
         <axis xyz="0 -1 0" />
         <origin xyz="-0.2295 0.2295 0" rpy="0 0 0"/>
         <parent link="base_link"/>
@@ -142,7 +142,7 @@
         </inertial>
     </link>
 
-    <joint name="rear_right_wheel_joint" type="continuous"> <!-- continuous fixed -->
+    <joint name="rear_right_wheel_joint" type="continuous">
         <axis xyz="0 1 0" />
         <origin xyz="-0.2295 -0.2295 0" rpy="0 0 0"/>
         <parent link="base_link"/>
@@ -172,7 +172,7 @@
         </inertial>
     </link>
 
-    <joint name="front_right_wheel_joint" type="continuous"> <!-- continuous fixed -->
+    <joint name="front_right_wheel_joint" type="continuous">
         <axis xyz="0 1 0" />
         <origin xyz="0.2295 0.2295 0" rpy="0 0 0"/>
         <parent link="base_link"/>
@@ -202,7 +202,7 @@
         </inertial>
     </link>
 
-    <joint name="front_left_wheel_joint" type="continuous"> <!-- continuous fixed-->
+    <joint name="front_left_wheel_joint" type="continuous">
         <axis xyz="0 -1 0" />
         <origin xyz="0.2295 -0.2295 0" rpy="0 0 0"/>
         <parent link="base_link"/>
@@ -241,7 +241,7 @@
 
     <link name="base_column_link">
         <visual>
-            <origin xyz="0.135 0 0.216" rpy="0 0 0"/>
+            <origin xyz="0.135 0 0.2" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/column_base.stl" scale="0.027 0.027 0.027"/>
@@ -250,9 +250,10 @@
         </visual>
 
         <collision>
-            <origin xyz="0.135 0 0.405" rpy="0 0 0"/>
+            <origin xyz="0.135 0 0.2" rpy="0 0 0"/>
             <geometry>
-                <box size="0.108 0.189 0.2835"/>
+                <mesh
+                    filename="package://humic_description/meshes/STL/column_base.stl" scale="0.027 0.027 0.027"/>
             </geometry>
         </collision>
 
@@ -264,21 +265,29 @@
 
     <joint name="inner_column_joint" type="prismatic">
         <axis xyz="0 0 1" />
-        <limit velocity="1" effort="1" lower="0" upper="0.10" />
-        <origin xyz="0.135 0 0.135" rpy="0 0 0"/> 
+        <limit velocity="0.01" effort="1000" lower="0" upper="0.20" />
+        <origin xyz="0.135 0 0.1" rpy="0 0 0"/> 
         <parent link="base_column_link"/>
         <child link="inner_column_link"/>
     </joint>
 
     <link name="inner_column_link">
         <visual>
-            <origin xyz="0 0 0.324" rpy="0 0 0"/>
+            <origin xyz="0 0 0.3" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/column_inner.stl" scale="0.027 0.027 0.027"/>
             </geometry>
             <material name="white"/>
         </visual>
+
+        <collision>
+            <origin xyz="0 0 0.3" rpy="0 0 0"/>
+            <geometry>
+                <mesh
+                    filename="package://humic_description/meshes/STL/column_inner.stl" scale="0.027 0.027 0.027"/>
+            </geometry>
+        </collision>
 
         <inertial>
             <mass value="2.349"/>
@@ -368,7 +377,7 @@
         <axis xyz="0 -1 0" />
         <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
-        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        <origin xyz="0 0 0.05" rpy="0 0.6 0"/>
         <parent link="head_link"/>
         <child link="head_kinect_link"/>
     </joint>
@@ -674,8 +683,8 @@
 
     <joint name="r_finger1_1_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0.0324 -0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
         <child link="r_finger1_1_link"/>
@@ -707,8 +716,8 @@
 
     <joint name="r_finger1_2_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.054" rpy="0 0 0"/>
         <parent link="r_finger1_1_link"/>
         <child link="r_finger1_2_link"/>
@@ -740,8 +749,8 @@
 
     <joint name="r_finger2_1_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0.0108 -0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
         <child link="r_finger2_1_link"/>
@@ -773,8 +782,8 @@
 
     <joint name="r_finger2_2_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.0567" rpy="0 0 0"/>
         <parent link="r_finger2_1_link"/>
         <child link="r_finger2_2_link"/>
@@ -806,8 +815,8 @@
 
     <joint name="r_finger3_1_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="-0.0108 -0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
         <child link="r_finger3_1_link"/>
@@ -839,8 +848,8 @@
 
     <joint name="r_finger3_2_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.0459" rpy="0 0 0"/>
         <parent link="r_finger3_1_link"/>
         <child link="r_finger3_2_link"/>
@@ -872,8 +881,8 @@
 
     <joint name="r_finger4_1_joint" type="revolute"> 
         <axis xyz="1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="-0.0324 -0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="r_finger_link"/>
         <child link="r_finger4_1_link"/>
@@ -905,8 +914,8 @@
 
     <joint name="r_finger4_2_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.0405" rpy="0 0 0"/>
         <parent link="r_finger4_1_link"/>
         <child link="r_finger4_2_link"/>
@@ -938,8 +947,8 @@
     
     <joint name="r_thumb_joint" type="revolute">
         <axis xyz="0 0 1" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.25}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.25}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0.0135 0.0216 -0.054" rpy="0 0 ${-pi*0.25}"/>
         <parent link="r_finger_link"/>
         <child link="r_thumb_link"/>
@@ -1214,8 +1223,8 @@
 
     <joint name="l_finger1_1_joint" type="revolute"> 
         <axis xyz="-1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0.0324 0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="l_finger_link"/>
         <child link="l_finger1_1_link"/>
@@ -1247,8 +1256,8 @@
 
     <joint name="l_finger1_2_joint" type="revolute"> 
         <axis xyz="-1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.054" rpy="0 0 0"/>
         <parent link="l_finger1_1_link"/>
         <child link="l_finger1_2_link"/>
@@ -1280,8 +1289,8 @@
 
     <joint name="l_finger2_1_joint" type="revolute"> 
         <axis xyz="-1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0.0108 0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="l_finger_link"/>
         <child link="l_finger2_1_link"/>
@@ -1313,8 +1322,8 @@
 
     <joint name="l_finger2_2_joint" type="revolute"> 
         <axis xyz="-1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.0567" rpy="0 0 0"/>
         <parent link="l_finger2_1_link"/>
         <child link="l_finger2_2_link"/>
@@ -1346,8 +1355,8 @@
 
     <joint name="l_finger3_1_joint" type="revolute"> 
         <axis xyz="-1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="-0.0108 0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="l_finger_link"/>
         <child link="l_finger3_1_link"/>
@@ -1379,8 +1388,8 @@
 
     <joint name="l_finger3_2_joint" type="revolute"> 
         <axis xyz="-1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.0459" rpy="0 0 0"/>
         <parent link="l_finger3_1_link"/>
         <child link="l_finger3_2_link"/>
@@ -1412,8 +1421,8 @@
 
     <joint name="l_finger4_1_joint" type="revolute"> 
         <axis xyz="-1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="-0.0324 0.0162 -0.0972" rpy="0 0 0"/>
         <parent link="l_finger_link"/>
         <child link="l_finger4_1_link"/>
@@ -1445,8 +1454,8 @@
 
     <joint name="l_finger4_2_joint" type="revolute"> 
         <axis xyz="-1 0 0" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.5}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.5}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.0405" rpy="0 0 0"/>
         <parent link="l_finger4_1_link"/>
         <child link="l_finger4_2_link"/>
@@ -1478,8 +1487,8 @@
 
     <joint name="l_thumb_joint" type="revolute"> 
         <axis xyz="0 0 -1" />
-        <limit velocity="1" effort="1" lower="0" upper="${pi*0.25}" />
-        <dynamics damping="0.2"/>
+        <limit velocity="10" effort="1000" lower="0" upper="${pi*0.25}" />
+        <dynamics damping="0.7"/>
         <origin xyz="0.0135 -0.0216 -0.054" rpy="0 0 ${pi*0.25}"/>
         <parent link="l_finger_link"/>
         <child link="l_thumb_link"/>
