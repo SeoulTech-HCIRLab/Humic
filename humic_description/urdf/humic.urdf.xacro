@@ -265,15 +265,17 @@
 
     <joint name="inner_column_joint" type="prismatic">
         <axis xyz="0 0 1" />
-        <limit velocity="0.01" effort="1000" lower="0" upper="0.20" />
-        <origin xyz="0.135 0 0.1" rpy="0 0 0"/> 
+        <limit velocity="0.01" effor="1000" lower="0" upper="0.20" />
+        <origin xyz="0.135 0 0.3" rpy="0 0 0"/>
+        <!-- <limit velocity="0.01" effort="1000" lower="0" upper="0.5" /> -->
+        <!-- <origin xyz="0.135 0 0.05" rpy="0 0 0"/> -->
         <parent link="base_column_link"/>
         <child link="inner_column_link"/>
     </joint>
 
     <link name="inner_column_link">
         <visual>
-            <origin xyz="0 0 0.3" rpy="0 0 0"/>
+            <origin xyz="0 0 0.4" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/column_inner.stl" scale="0.027 0.027 0.027"/>
@@ -282,7 +284,7 @@
         </visual>
 
         <collision>
-            <origin xyz="0 0 0.3" rpy="0 0 0"/>
+            <origin xyz="0 0 0.4" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/column_inner.stl" scale="0.027 0.027 0.027"/>
@@ -304,7 +306,7 @@
 
     <link name="torso_link">
         <visual>
-            <origin xyz="-0.0432 0 0.7425" rpy="0 0 0"/>
+            <origin xyz="-0.0432 0 0.675" rpy="0 0 0"/>
             <geometry>
                 <mesh
                     filename="package://humic_description/meshes/STL/torso.stl" scale="0.027 0.027 0.027"/>
@@ -327,7 +329,7 @@
 
     <!-- head(Pan(neck), Tile(head), Kinect V2)-->
     <joint name="torso_neck_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 -0.0675" rpy="0 0 0"/>
         <parent link="torso_link"/>
         <child link="neck_link"/>
     </joint>
@@ -377,7 +379,7 @@
         <axis xyz="0 -1 0" />
         <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
-        <origin xyz="0 0 0.05" rpy="0 0.6 0"/>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
         <parent link="head_link"/>
         <child link="head_kinect_link"/>
     </joint>
@@ -431,7 +433,7 @@
 
     <link name="imu_link">
         <visual>
-            <origin xyz="0.0621 0.0216 0.729" rpy="0 0 0"/>
+            <origin xyz="0.0621 0.0216 0.6615" rpy="0 0 0"/>
             <geometry>
                 <box size="0.00135 0.0054 0.0054"/>
             </geometry>
@@ -441,7 +443,7 @@
 
     <!-- Right ARM -->
     <joint name="r_arm_body_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 -0.0675" rpy="0 0 0"/>
         <parent link="torso_link"/>
         <child link="r_shoulder_link"/>
     </joint>
@@ -980,6 +982,7 @@
 
     <!-- Left ARM -->
     <joint name="l_arm_body_joint" type="fixed">
+        <origin xyz="0 0 -0.0675" rpy="0 0 0"/>
         <parent link="torso_link"/>
         <child link="l_shoulder_link"/>
     </joint>
