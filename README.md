@@ -34,6 +34,6 @@
 
        $ rqt
        
-       * Plugins option: HUMIC Controller selection
-       * Perspectives option: HUMIC GUI.perspective selection
+     * Plugins option: HUMIC Controller selection
+     * Perspectives option: HUMIC GUI.perspective selection
        
