@@ -33,7 +33,8 @@
 * HUMIC rqt controller
 
        $ rqt
-       
+      
+     * http://wiki.ros.org/rqt
      * Plugins option: HUMIC Controller selection
      * Perspectives option: HUMIC GUI.perspective selection
        
