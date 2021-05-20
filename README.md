@@ -39,4 +39,8 @@
        
 ### 6. Run HUMIC Navigation using reinforcement learning
 
-        $ roslaunch humic_rl humic_navigation.launch
+   * Terminate the gazebo, Terminate the HUMIC model in gazebo
+   
+   * Run Navigation world
+   
+            $ roslaunch humic_rl humic_navigation.launch
