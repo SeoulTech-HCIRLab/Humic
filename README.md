@@ -24,7 +24,7 @@
 
       $cd ~/catkin_ws/ && catkin_make
 
-### 5. Run
+### 5. Run HUMIC URDF Model
 
 * HUMIC in gazebo world
 
@@ -37,3 +37,6 @@
      * Plugins option: HUMIC Controller selection
      * Perspectives option: HUMIC GUI.perspective selection
        
+### 6. Run HUMIC Navigation using reinforcement learning
+
+        $ roslaunch humic_rl humic_navigation.launch
