@@ -14,15 +14,15 @@
 
 * Move to Your ROS workspace
     
-      $cd ~/catkin_ws/src
+      $ cd ~/catkin_ws/src
     
 * Clone HUMIC package
    
-      $git clone https://github.com/SeoulTech-HCIRLab/Humic.git
+      $ git clone https://github.com/SeoulTech-HCIRLab/Humic.git
 
 ### 4. Build
 
-      $cd ~/catkin_ws/ && catkin_make
+      $ cd ~/catkin_ws/ && catkin_make
 
 ### 5. Run HUMIC URDF Model
 
