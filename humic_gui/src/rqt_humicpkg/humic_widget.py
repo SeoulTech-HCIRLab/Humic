@@ -145,7 +145,7 @@ class HumicWidget(QWidget):
         self.lift_column_timer.start(self.PUBLISH_INTERVAL)
 
         self.lift_column_pub = rospy.Publisher('/humic/lift_column/command', Float64, queue_size=1)
-        self.lift_column_val = 0.0
+        self.lift_column_val = 0.1
         
         self.doubleSpinBox_lift_column.valueChanged.connect(self.liftColumn)
 
@@ -436,7 +436,6 @@ class HumicWidget(QWidget):
         self.unpauseSim()
         self.resetSimulation()
 
-    
     def resetRobotState(self):
         self.pub_velocity.linear.x = 0.0
         self.pub_velocity.linear.y = 0.0
@@ -465,8 +464,8 @@ class HumicWidget(QWidget):
         self.doubleSpinBox_head.setValue(0.0)
         self.sendTrajectoryHead()
 
-        self.lift_column_val = 0.0
-        self.doubleSpinBox_lift_column.setValue(0.0)
+        self.lift_column_val = 0.1
+        self.doubleSpinBox_lift_column.setValue(0.1)
         self.sendLiftColumn()
         
         self.rightPlace()
