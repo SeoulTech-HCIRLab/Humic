@@ -7,10 +7,10 @@
   <arg name="z_pos" default="0.0"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <!-- <arg name="world_name" value="$(find humic_gazebo)/worlds/empty.world"/> -->
+    <arg name="world_name" value="$(find humic_gazebo)/worlds/empty.world"/>
     <!-- <arg name="world_name" value="$(find humic_gazebo)/worlds/humic_desk.world"/> -->
     <!-- <arg name="world_name" value="$(find humic_gazebo)/worlds/humic_room.world"/> -->
-    <arg name="world_name" value="$(find humic_gazebo)/worlds/humic_navigation.world"/>
+    <!--<arg name="world_name" value="$(find humic_gazebo)/worlds/humic_navigation.world"/> -->
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>
