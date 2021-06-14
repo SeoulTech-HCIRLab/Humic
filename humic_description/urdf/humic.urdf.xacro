@@ -1010,7 +1010,7 @@
     </link>
 
     <joint name="l_shoulder_joint" type="revolute"> 
-        <axis xyz="0 -1 0" />
+        <axis xyz="0 1 0" />
         <limit velocity="6.5" effort="1000" lower="${-pi}" upper="${pi}" />
         <dynamics damping="0.7"/>
         <origin xyz="0.0108 0.3321 0.729" rpy="0 0 0"/>
@@ -1110,7 +1110,7 @@
     </link>
 
     <joint name="l_foreArm_joint" type="revolute"> 
-        <axis xyz="0 0 1" />
+        <axis xyz="0 0 -1" />
         <limit velocity="6.5" effort="1000" lower="${-pi}" upper="${pi}" />
         <dynamics damping="0.7"/>
         <origin xyz="0 0.0297 -0.243" rpy="0 0 0"/>
@@ -1177,7 +1177,7 @@
     </link>
 
     <joint name="l_wrist_joint" type="revolute"> 
-        <axis xyz="0 0 1" />
+        <axis xyz="0 0 -1" />
         <limit velocity="13" effort="1000" lower="${-pi}" upper="${pi}" />
         <dynamics damping="0.7"/>
         <origin xyz="0 0 -0.1296" rpy="0 0 0"/>
