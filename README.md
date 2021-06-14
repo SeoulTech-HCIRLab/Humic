@@ -1,12 +1,13 @@
-# Humic ROS package(ROS Version: Noetic)
+# Humic ROS package(ROS Version: Noetic or Melodic)
 
-## 1. Installation ROS Noetic 
+## 1. Installation ROS Noetic or Melodic
 
 ### Installation instructions
 
 * http://wiki.ros.org/noetic/Installation/Ubuntu
+* http://wiki.ros.org/melodic/Installation/Ubuntu
 
-### Installation Script
+### Installation noetic Script
      
 * https://robocademy.com/2020/05/23/getting-started-with-new-ros-noetic-ninjemys/
          
