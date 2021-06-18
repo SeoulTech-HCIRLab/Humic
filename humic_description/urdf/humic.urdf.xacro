@@ -2,7 +2,7 @@
 <robot name="humic" xmlns:xacro="http://ros.org/wiki/xacro">
 
     <!-- some parameters -->
-    <xacro:property name="pi" value="3.141592" />
+    <xacro:property name="pi" value="3.141592654" />
 
     <xacro:include filename="$(find humic_description)/urdf/materials.xacro"/>
 
@@ -10,8 +10,8 @@
    
     <xacro:include filename="$(find humic_description)/urdf/humic.right_transmission.xacro"/>
     <xacro:include filename="$(find humic_description)/urdf/humic.left_transmission.xacro"/>
-    <xacro:include filename="$(find humic_description)/urdf/humic.head_transmission.xacro"/>
     <xacro:include filename="$(find humic_description)/urdf/humic.column_transmission.xacro"/>
+    <xacro:include filename="$(find humic_description)/urdf/humic.head_transmission.xacro"/>
 
     <!-- base footprint -->
     <link name="base_footprint"/>
@@ -45,7 +45,7 @@
         </inertial>
     </link>
 
-    <joint name="front_ultrasonic_joint" type="fixed">
+    <!-- <joint name="front_ultrasonic_joint" type="fixed">
         <origin xyz="0.335 0 0.102" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="front_ultrasonic"/>
@@ -107,7 +107,7 @@
             </geometry>
             <material name="white"/>
         </visual>
-    </link>
+    </link> -->
 
     <!-- Mobile-Platform Wheel -->
     <!-- front left & rear right couple-->
@@ -265,8 +265,10 @@
 
     <joint name="inner_column_joint" type="prismatic">
         <axis xyz="0 0 1" />
-        <limit velocity="0.01" effor="1000" lower="0" upper="0.50" />
-        <origin xyz="0.135 0 0.05" rpy="0 0 0"/>
+        <limit velocity="0.01" effort="1000" lower="0" upper="0"/>
+        <origin xyz="0.135 0 0.25" rpy="0 0 0"/>
+        <!-- <limit velocity="0.01" effort="1000" lower="0" upper="0.50"/> -->
+        <!-- <origin xyz="0.135 0 0.05" rpy="0 0 0"/> -->
         <parent link="base_column_link"/>
         <child link="inner_column_link"/>
     </joint>
@@ -352,7 +354,7 @@
         <axis xyz="0 0 1" />
         <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
-        <origin xyz="0.0621 0 0.9099" rpy="0 0 0"/>
+        <origin xyz="0.0621 0 0.9099" rpy="0 0.3 0"/>
         <parent link="neck_link"/>
         <child link="head_link"/>
     </joint>
@@ -507,7 +509,7 @@
         <axis xyz="1 0 0" />
         <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
-        <origin xyz="0 -0.0297 0" rpy="0 0 0"/>
+        <origin xyz="0 -0.0297 0" rpy="${-pi*0.5} 0 0"/>
         <parent link="r_upperArm_link"/>
         <child link="r_elbow_link"/>
     </joint>
@@ -540,7 +542,7 @@
         <axis xyz="1 0 0" />
         <limit velocity="6.5" effort="1000" lower="${-pi*0.25}" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
-        <origin xyz="0 0.0297 -0.2835" rpy="0 0 0"/>
+        <origin xyz="0 0.0297 -0.2835" rpy="${pi*0.5} 0 0"/>
         <parent link="r_elbow_link"/>
         <child link="r_foreArm_link"/>
     </joint>
@@ -1046,7 +1048,7 @@
         <axis xyz="-1 0 0" />
         <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
-        <origin xyz="0 0.0297 0" rpy="0 0 0"/>
+        <origin xyz="0 0.0297 0" rpy="${pi*0.5} 0 0"/>
         <parent link="l_upperArm_link"/>
         <child link="l_elbow_link"/>
     </joint>
@@ -1080,7 +1082,7 @@
         <axis xyz="-1 0 0" />
         <limit velocity="6.5" effort="1000" lower="${-pi*0.25}" upper="${pi*0.5}" />
         <dynamics damping="0.7"/>
-        <origin xyz="0 -0.0297 -0.2835" rpy="0 0 0"/>
+        <origin xyz="0 -0.0297 -0.2835" rpy="${-pi*0.5} 0 0"/>
         <parent link="l_elbow_link"/>
         <child link="l_foreArm_link"/>
     </joint>
