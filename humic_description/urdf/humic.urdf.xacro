@@ -45,7 +45,7 @@
         </inertial>
     </link>
 
-    <!-- <joint name="front_ultrasonic_joint" type="fixed">
+    <joint name="front_ultrasonic_joint" type="fixed">
         <origin xyz="0.335 0 0.102" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="front_ultrasonic"/>
@@ -107,7 +107,7 @@
             </geometry>
             <material name="white"/>
         </visual>
-    </link> -->
+    </link>
 
     <!-- Mobile-Platform Wheel -->
     <!-- front left & rear right couple-->
