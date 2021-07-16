@@ -45,7 +45,8 @@
      * Plugins option: HUMIC Controller selection
      * Perspectives option: HUMIC GUI.perspective selection
        
-## 6. Run HUMIC Navigation using reinforcement learning
+## 6. Run HUMIC Navigation using reinforcement learning(
+   * This package was tested with Noetic and python3
 
    * Terminate the gazebo, Terminate the HUMIC model in gazebo
    
