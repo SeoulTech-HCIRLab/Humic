@@ -1,12 +1,13 @@
-# Humic ROS package(ROS Version: Noetic or Melodic)
+# Humic ROS package
 ### If you want to more detail, You can see in this paper
 https://www.koreascience.or.kr/article/JAKO202124553294650.page
 ## 1. Installation ROS Noetic or Melodic
 
+### ROS Version: Noetic(on Ubuntu 20.04)
+
 ### Installation instructions
 
 * http://wiki.ros.org/noetic/Installation/Ubuntu
-* http://wiki.ros.org/melodic/Installation/Ubuntu
 
 ### Installation noetic Script
      
@@ -48,6 +49,7 @@ https://www.koreascience.or.kr/article/JAKO202124553294650.page
        
 ## 6. Run HUMIC Navigation using reinforcement learning
    * This package was tested with Noetic and python3
+   * using Pytorch
 
    * Terminate the gazebo, Terminate the HUMIC model in gazebo
    
