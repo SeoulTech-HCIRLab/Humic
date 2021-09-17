@@ -49,7 +49,7 @@ https://www.koreascience.or.kr/article/JAKO202124553294650.page
        
 ## 6. Run HUMIC Navigation using reinforcement learning
    * This package was tested with Noetic and python3
-   * using Pytorch
+   * Pytorch
 
    * Terminate the gazebo, Terminate the HUMIC model in gazebo
    
