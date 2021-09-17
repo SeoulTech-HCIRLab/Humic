@@ -1,5 +1,6 @@
 # Humic ROS package(ROS Version: Noetic or Melodic)
-
+### If you want to more detail, You can see in this paper
+https://www.koreascience.or.kr/article/JAKO202124553294650.page
 ## 1. Installation ROS Noetic or Melodic
 
 ### Installation instructions
