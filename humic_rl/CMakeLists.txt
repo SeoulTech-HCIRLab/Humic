@@ -22,9 +22,7 @@ install(DIRECTORY launch nodes src
 )
 
 catkin_install_python(PROGRAMS
-  nodes/humicselfcollisionavoid
   nodes/humicnavigation
-  src/humic_self_collision_avoid_env.py
   src/humic_navigation_env.py
 
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
