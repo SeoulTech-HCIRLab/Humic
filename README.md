@@ -9,7 +9,7 @@ https://www.koreascience.or.kr/article/JAKO202124553294650.page
 
 * http://wiki.ros.org/noetic/Installation/Ubuntu
 
-### Or Installation noetic Script
+### Or script
      
 * https://robocademy.com/2020/05/23/getting-started-with-new-ros-noetic-ninjemys/
          
