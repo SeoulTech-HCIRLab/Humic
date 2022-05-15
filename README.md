@@ -51,6 +51,7 @@ https://www.koreascience.or.kr/article/JAKO202124553294650.page
      * Perspectives option: HUMIC GUI.perspective selection
        
 ## 6. Run HUMIC Navigation using reinforcement learning
+   * Source code: https://github.com/SeoulTech-HCIRLab/Humic/tree/master/humic_rl
    * This package was tested with Noetic and python3
    * Pytorch
 
