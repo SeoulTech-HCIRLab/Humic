@@ -1,5 +1,5 @@
 # Humic ROS package
-### If you want to more detail, You can see in this paper
+### Paper
 https://www.koreascience.or.kr/article/JAKO202124553294650.page
 ## 1. Installation ROS Noetic
 
