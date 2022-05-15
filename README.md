@@ -39,7 +39,8 @@ https://www.koreascience.or.kr/article/JAKO202124553294650.page
 
        $ roslaunch humic_gazebo humic.launch
      
-     * Source code: https://github.com/SeoulTech-HCIRLab/Humic/tree/master/humic_description
+     * URDF source code: https://github.com/SeoulTech-HCIRLab/Humic/tree/master/humic_description
+     * Gazebo world source code: https://github.com/SeoulTech-HCIRLab/Humic/tree/master/humic_gazebo
 
 * HUMIC rqt controller
 
