@@ -38,11 +38,14 @@ https://www.koreascience.or.kr/article/JAKO202124553294650.page
 * HUMIC in gazebo world
 
        $ roslaunch humic_gazebo humic.launch
+     
+     * Source code: https://github.com/SeoulTech-HCIRLab/Humic/tree/master/humic_description
 
 * HUMIC rqt controller
 
        $ rqt
-      
+     
+     * Source code: https://github.com/SeoulTech-HCIRLab/Humic/tree/master/humic_gui
      * http://wiki.ros.org/rqt
      * Plugins option: HUMIC Controller selection
      * Perspectives option: HUMIC GUI.perspective selection
