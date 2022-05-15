@@ -1,7 +1,7 @@
 # Humic ROS package
 ### If you want to more detail, You can see in this paper
 https://www.koreascience.or.kr/article/JAKO202124553294650.page
-## 1. Installation ROS Noetic or Melodic
+## 1. Installation ROS Noetic
 
 ### ROS Version: Noetic(on Ubuntu 20.04)
 
