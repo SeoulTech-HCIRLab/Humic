@@ -23,28 +23,29 @@ https://www.koreascience.or.kr/article/JAKO202124553294650.page
 
 * Move to Your ROS workspace
     
-      $ cd ~/catkin_ws/src
+      sudo apt-get install ros-noetic-vision-msgs
+      cd ~/catkin_ws/src
     
 * Clone HUMIC package
    
-      $ git clone https://github.com/SeoulTech-HCIRLab/Humic.git
+      git clone https://github.com/SeoulTech-HCIRLab/Humic.git
 
 ## 4. Build
 
-      $ cd ~/catkin_ws/ && catkin_make
+      cd ~/catkin_ws/ && catkin_make
 
 ## 5. Run HUMIC URDF Model
 
 * HUMIC in gazebo world
 
-       $ roslaunch humic_gazebo humic.launch
+       roslaunch humic_gazebo humic.launch
      
      * URDF source code: https://github.com/SeoulTech-HCIRLab/Humic/tree/master/humic_description
      * Gazebo world source code: https://github.com/SeoulTech-HCIRLab/Humic/tree/master/humic_gazebo
 
 * HUMIC rqt controller
 
-       $ rqt
+       rqt
      
      * Source code: https://github.com/SeoulTech-HCIRLab/Humic/tree/master/humic_gui
      * http://wiki.ros.org/rqt
@@ -60,4 +61,4 @@ https://www.koreascience.or.kr/article/JAKO202124553294650.page
    
    * Run Navigation world
    
-            $ roslaunch humic_rl humic_navigation.launch
+            roslaunch humic_rl humic_navigation.launch
